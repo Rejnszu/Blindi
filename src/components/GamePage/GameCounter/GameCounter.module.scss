@@ -1,0 +1,41 @@
+.counter {
+  margin: 5rem;
+  width: 500px;
+  box-shadow: 4px 4px 10px -1px rgba(0, 0, 0, 0.2),
+    -4px -4px 10px -1px rgba(0, 0, 0, 0.5);
+  max-width: 90%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__inner-part {
+    background: var(--background-color);
+    box-shadow: inset 4px 4px 10px -1px rgba(0, 0, 0, 0.2),
+      inset -4px -4px 10px -1px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__button {
+    font-size: clamp(1rem, 5vw, 2rem);
+    font-weight: 700;
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: transparent;
+    box-shadow: 4px 4px 10px -1px rgba(0, 0, 0, 0.2),
+      -4px -4px 10px -1px rgba(0, 0, 0, 0.5);
+    border: none;
+    transition: all 0.3s;
+    &:hover {
+      box-shadow: 6px 6px 12px -1px rgba(0, 0, 0, 0.2),
+        -6px -6px 12px -1px rgba(0, 0, 0, 0.5);
+    }
+  }
+}

@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap");
+:root {
+  --text-color: black;
+  --main-color: rgba(255, 196, 0, 1);
+  --background-color: radial-gradient(
+    circle,
+    rgba(255, 196, 0, 1) 0%,
+    rgba(255, 162, 0, 1) 100%
+  );
+  --box-shadow: 3px 3px 3px black;
+}
+:root:has(.dark-theme) {
+  --text-color: white;
+  --background-color: grey;
+}
+body {
+  font-family: "Public Sans", sans-serif;
+  font-weight: 400;
+  margin: 0;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+
+  padding: 0;
+  background: var(--background-color);
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+.whole-app {
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+  &__image {
+    position: absolute;
+    opacity: 0.5;
+    z-index: -1;
+    max-width: 100%;
+    width: clamp(150px, 15vw, 300px);
+    &--chips {
+      top: 20px;
+      left: 20px;
+    }
+    &--cards {
+      bottom: 20px;
+      right: 20px;
+    }
+  }
+}
+.default-page {
+  max-width: 90%;
+  margin: 0 auto;
+}
