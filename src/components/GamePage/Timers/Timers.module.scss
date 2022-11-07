@@ -1,0 +1,27 @@
+.timers {
+  list-style: none;
+  display: flex;
+
+  padding: 0;
+  max-width: 100%;
+  gap: 20px;
+  justify-content: center;
+  align-self: stretch;
+  flex-wrap: wrap;
+
+  li {
+    font-size: clamp(0.6rem, 3vw, 1rem);
+    font-weight: 700;
+    border: 2px solid var(--text-color);
+    padding: 5px;
+    transition: all 0.3s;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.05) translateY(5px);
+    }
+    &.active {
+      background-color: var(--text-color);
+      color: var(--main-color);
+    }
+  }
+}

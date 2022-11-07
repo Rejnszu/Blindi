@@ -1,5 +1,5 @@
 .counter {
-  margin: 5rem;
+  margin: 3rem 0 2rem 0;
   width: 500px;
   box-shadow: 4px 4px 10px -1px rgba(0, 0, 0, 0.2),
     -4px -4px 10px -1px rgba(0, 0, 0, 0.5);
@@ -34,8 +34,7 @@
     border: none;
     transition: all 0.3s;
     &:hover {
-      box-shadow: 6px 6px 12px -1px rgba(0, 0, 0, 0.2),
-        -6px -6px 12px -1px rgba(0, 0, 0, 0.5);
+      transform: scale(1.1);
     }
   }
 }

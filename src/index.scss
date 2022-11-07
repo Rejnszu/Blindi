@@ -7,7 +7,7 @@
     rgba(255, 196, 0, 1) 0%,
     rgba(255, 162, 0, 1) 100%
   );
-  --box-shadow: 3px 3px 3px black;
+  --box-shadow: 3px 3px 5px black;
 }
 :root:has(.dark-theme) {
   --text-color: white;
@@ -50,6 +50,7 @@ p {
   }
 }
 .default-page {
+  padding: 2rem 0;
   max-width: 90%;
   margin: 0 auto;
 }

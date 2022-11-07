@@ -1,16 +1,20 @@
 .blinds {
-  display: flex;
-  justify-content: space-around;
-
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 60px;
+  &__inner-wrapper {
+    display: flex;
+    justify-content: space-around;
+  }
 }
 .blind {
   position: relative;
-  padding: 2rem 3rem;
+  padding: 1rem 2rem;
   font-size: clamp(1.5rem, 5vw, 2rem);
   &--small {
     color: red;
-    box-shadow: -3px 3px 3px black;
+    box-shadow: -3px 3px 5px black;
     &:before {
       content: "SMALL";
     }
@@ -18,15 +22,25 @@
   &--big {
     color: black;
     font-weight: 700;
-    box-shadow: 3px 3px 3px black;
+    box-shadow: 3px 3px 5px black;
     &:before {
       content: "BIG";
     }
   }
   &:before {
     position: absolute;
-    top: -50%;
+    top: -60%;
     transform: translateX(-50%);
     left: 50%;
+  }
+}
+.blind__warning {
+  font-size: clamp(1rem, 5vw, 1.5rem);
+  font-weight: 700;
+  text-align: center;
+}
+@media only screen and (max-width: 1000px) {
+  .next-page {
+    display: none;
   }
 }

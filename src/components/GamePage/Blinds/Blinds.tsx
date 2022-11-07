@@ -16,19 +16,24 @@ const Blinds = ({ blindLevel, increaseBlinds }: BlindsProps) => {
   }, [blindLevel]);
   return (
     <div className={styles.blinds}>
-      <p className={`${styles["blind"]} ${styles["blind--small"]}`}>
-        {blindStructure[blindLevel].smallBlind}
-      </p>
       {!warning ? (
         <Button onClick={increaseBlindsHandler} type="button">
           Zwiększ Blindy
         </Button>
       ) : (
-        <p>Osiągnąłeś najwyższy poziom blindów</p>
+        <p className={styles["blind__warning"]}>
+          Osiągnąłeś najwyższy poziom blindów
+        </p>
       )}
-      <p className={`${styles["blind"]} ${styles["blind--big"]}`}>
-        {blindStructure[blindLevel].bigBlind}
-      </p>
+      <div className={styles["blinds__inner-wrapper"]}>
+        <p className={`${styles["blind"]} ${styles["blind--small"]}`}>
+          {blindStructure[blindLevel].smallBlind}
+        </p>
+
+        <p className={`${styles["blind"]} ${styles["blind--big"]}`}>
+          {blindStructure[blindLevel].bigBlind}
+        </p>
+      </div>
     </div>
   );
 };
