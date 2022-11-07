@@ -3,14 +3,14 @@ import React, { useState } from "react";
 interface PokerContextObj {
   page: string;
   changePage: (text: string) => void;
-  time: number;
+  roundDuration: number;
   setCurrentRoundTime: (time: number) => void;
 }
 
 export const PokerContext = React.createContext<PokerContextObj>({
   page: "welcomePage",
   changePage: (text: string) => {},
-  time: 0,
+  roundDuration: 300,
   setCurrentRoundTime: (time: number) => {},
 });
 
@@ -20,17 +20,17 @@ interface ContextProps {
 
 const PokerContextProvider = ({ children }: ContextProps) => {
   const [page, setPage] = useState<string>("welcomePage");
-  const [time, setTime] = useState<number>(300);
+  const [roundDuration, setRoundDuration] = useState<number>(300);
   const changePage = (page: string): void => {
     setPage(page);
   };
   const setCurrentRoundTime = (time: number): void => {
-    setTime(time);
+    setRoundDuration(time);
   };
   const contextValue: PokerContextObj = {
     page: page,
     changePage: changePage,
-    time: time,
+    roundDuration: roundDuration,
     setCurrentRoundTime: setCurrentRoundTime,
   };
   return (

@@ -29,24 +29,27 @@ const Timers = () => {
   };
 
   return (
-    <ul ref={listRef} className={styles.timers}>
-      {timersList.map((timer) => {
-        return (
-          <li
-            onClick={(e: React.MouseEvent<HTMLLIElement>) => {
-              setCurrentRoundTime(
-                Number(e.currentTarget.getAttribute("data-time"))
-              ),
+    <React.Fragment>
+      <p className={styles["timer-heading"]}>Ustaw czas rundy</p>
+      <ul ref={listRef} className={styles.timers}>
+        {timersList.map((timer) => {
+          return (
+            <li
+              onClick={(e: React.MouseEvent<HTMLLIElement>) => {
+                setCurrentRoundTime(
+                  Number(e.currentTarget.getAttribute("data-time"))
+                );
                 setActiveItem(e);
-            }}
-            key={timer.name}
-            data-time={timer.time}
-          >
-            {timer.name}
-          </li>
-        );
-      })}
-    </ul>
+              }}
+              key={timer.name}
+              data-time={timer.time}
+            >
+              {timer.name}
+            </li>
+          );
+        })}
+      </ul>
+    </React.Fragment>
   );
 };
 

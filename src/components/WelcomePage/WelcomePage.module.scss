@@ -1,7 +1,8 @@
 .welcome-page {
   &__description {
+    margin-top: 2rem;
+    background-color: grey;
     font-size: 1.2rem;
-    max-width: 70%;
-    margin: auto;
+    max-width: 50%;
   }
 }

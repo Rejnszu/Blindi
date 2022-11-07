@@ -5,6 +5,7 @@ import styles from "./Game.module.scss";
 import AnimatedPages from "../UI/AnimatedPages";
 import Blinds from "./Blinds/Blinds";
 import Timers from "./Timers/Timers";
+import BlindsStructureTable from "./Blinds/BlindsStructureTable";
 const Game = () => {
   const [blindLevel, setBlindLevel] = useState(0);
   const increaseBlinds = (): void => {
@@ -14,6 +15,7 @@ const Game = () => {
     <AnimatedPages>
       <div className={`${styles["game-page"]} default-page`}>
         <Header>Pora zaczać rozgrywkę!</Header>
+        <BlindsStructureTable blindLevel={blindLevel} />
         <Timers />
         <GameCounter blindLevel={blindLevel} increaseBlinds={increaseBlinds} />
         <Blinds blindLevel={blindLevel} increaseBlinds={increaseBlinds} />

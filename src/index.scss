@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap");
 :root {
   --text-color: black;
-  --main-color: rgba(255, 196, 0, 1);
+  --main-color: rgb(255, 187, 0);
   --background-color: radial-gradient(
     circle,
     rgba(255, 196, 0, 1) 0%,
     rgba(255, 162, 0, 1) 100%
   );
-  --box-shadow: 3px 3px 5px black;
+  --box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
 }
 :root:has(.dark-theme) {
   --text-color: white;
@@ -39,6 +39,9 @@ p {
     z-index: -1;
     max-width: 100%;
     width: clamp(150px, 15vw, 300px);
+    @media only screen and (max-width: 850px) {
+      display: none;
+    }
     &--chips {
       top: 20px;
       left: 20px;
@@ -50,7 +53,7 @@ p {
   }
 }
 .default-page {
-  padding: 2rem 0;
+  padding: 1rem 0;
   max-width: 90%;
   margin: 0 auto;
 }

@@ -16,11 +16,10 @@ interface BlindsProps {
 }
 const GameCounter = ({ blindLevel, increaseBlinds }: BlindsProps) => {
   const pokerCtx = useContext(PokerContext);
-  const ctxTime = pokerCtx.time;
+  const ctxTime = pokerCtx.roundDuration;
   const [counterFilling, setCounterFilling] = useState(0);
   const [time, setTime] = useState(ctxTime);
 
-  const initialTime = useRef<number>(time);
   const [isPlaying, setIsPlaying] = useState(false);
   const [roundIsFinished, setRoundIsFinished] = useState(false);
   function timer(): void {

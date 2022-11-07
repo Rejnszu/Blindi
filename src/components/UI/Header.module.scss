@@ -5,8 +5,8 @@
   margin: auto;
 }
 .heading {
-  font-size: clamp(1.5rem, 5vw, 2rem);
-
+  font-size: clamp(1.2rem, 5vw, 2rem);
+  background-color: var(--main-color);
   text-align: center;
   margin: 1rem 0;
   padding: 1rem 3rem;
