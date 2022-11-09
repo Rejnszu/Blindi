@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 import WelcomePage from "./components/WelcomePage/WelcomePage";
 
@@ -9,7 +9,18 @@ import { PokerContext } from "./components/store/poker-context";
 import chips from "../src/assets/chips.png";
 import cards from "../src/assets/cards.png";
 import Loader from "./components/UI/Loader";
+import LoaderMobile from "./components/UI/LoaderMobile";
 function App() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
+  useEffect(() => {
+    function checkIfMobile() {
+      setIsMobile(window.innerWidth < 600);
+    }
+    window.addEventListener("resize", checkIfMobile);
+    return () => {
+      window.removeEventListener("resize", checkIfMobile);
+    };
+  });
   const pokerCtx = useContext(PokerContext);
   return (
     <div className="whole-app">
@@ -24,7 +35,12 @@ function App() {
         alt="cards"
       />
       <AnimatePresence mode="wait">
-        {pokerCtx.page === "loader" && <Loader key="loader" />}
+        {pokerCtx.page === "loader" &&
+          (!isMobile ? (
+            <Loader key="loader" />
+          ) : (
+            <LoaderMobile key="mobileLoader" />
+          ))}
         {pokerCtx.page === "welcomePage" && <WelcomePage key="welcomePage" />}
         {pokerCtx.page === "stackConfig" && <StackConfig key="stackConfig" />}
         {pokerCtx.page === "game" && <Game key="game" />}

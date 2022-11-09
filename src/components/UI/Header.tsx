@@ -10,9 +10,9 @@ const Header = ({ children }: HeaderProps) => {
   return (
     <header className={styles.header}>
       <motion.h1
-        initial={{ opacity: 0, x: "-200px" }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.2, delay: 0.3 }}
+        initial={{ opacity: 0, y: "-200px" }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.2, delay: 0.2 }}
         className={styles.heading}
       >
         {children}

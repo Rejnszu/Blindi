@@ -11,26 +11,26 @@ const WelcomePage = () => {
     <AnimatedPages>
       <div className={`${styles["welcome-page"]} default-page`}>
         <Header>Blindi</Header>
-        <p className={styles["welcome-page__description"]}>
-          <span> Witaj w Blindi!</span>
-          <br /> Aplikacji, która w prosty sposób pozwoli ci przejść przez
-          proces konfigurowania gry w pokera i pozwoli cieszyć się nią z
-          przyjaciółmi na najwyższym poziomie, oszczędzając przy tym dużo czasu.
-        </p>
-        <span>Na kolejnych stronach będziesz mógł:</span>
-        <ul className={styles["description__list"]}>
-          <li>
-            W prosty sposób przy pomocy naszego algorytmu rozdać odpowiednią
-            ilość rzetonów każdemu graczowi
-          </li>
-          <li>
-            Ustawić wysokość blindów oraz czas rundy, który będziesz mógł
-            śledzić przez cały przebieg rozgrywki
-          </li>
-        </ul>
-        <Button onClick={pokerCtx.changePage.bind(null, "game")} type="button">
-          Przejdź Dalej
-        </Button>
+        <div className={styles["welcome-page__cta"]}>
+          <div className={styles["cta__text"]}>
+            <p>Witaj w Blindi</p>
+            <p>Prawdziwa gra</p>
+            <p>Zaczyna się tutaj</p>
+            <p>
+              W tej aplikacji w prosty sposób przejdziesz przez proces
+              konfigurowania gry w pokera i będziesz się mógł nią cieszyć wraz
+              przyjaciółmi, na najwyższym poziomie, oszczędzając przy tym dużo
+              czasu.
+            </p>
+            <Button
+              onClick={pokerCtx.changePage.bind(null, "game")}
+              type="button"
+            >
+              Przejdź Dalej
+            </Button>
+          </div>
+          {/* <div className={styles["cta__img"]}></div> */}
+        </div>
       </div>
     </AnimatedPages>
   );

@@ -7,7 +7,7 @@ import spadesAce from "../../assets/cards/pik.png";
 import { motion } from "framer-motion";
 import AnimatedPages from "./AnimatedPages";
 
-const Loader = () => {
+const LoaderMobile = () => {
   return (
     <AnimatedPages>
       <div className={styles.loader}>
@@ -15,12 +15,12 @@ const Loader = () => {
           key="img1"
           initial={{ opacity: 0 }}
           animate={{
-            transform: `translateX(-150px) translateY(0) skewY(-10deg) skewX(-2deg)`,
+            transform: `translateX(-100px) translateY(0) skewY(-10deg) skewX(-2deg)`,
             opacity: 1,
           }}
           transition={{ duration: 0, delay: 0 }}
           exit={{
-            transform: "translate(-450px, 100px) skewY(-10deg) skewX(-2deg)",
+            transform: "translate(-150px, 100px) skewY(-10deg) skewX(-2deg)",
             opacity: 0,
           }}
           src={spadesAce}
@@ -31,11 +31,11 @@ const Loader = () => {
           initial={{ opacity: 0 }}
           animate={{
             transform:
-              "translateX(-50px) translateY(0) skewY(-10deg) skewX(-2deg)",
+              "translateX(-25px) translateY(0) skewY(-10deg) skewX(-2deg)",
             opacity: 1,
           }}
           exit={{
-            transform: "translate(-350px, 100px) skewY(-10deg) skewX(-2deg)",
+            transform: "translate(-75px, 100px) skewY(-10deg) skewX(-2deg)",
             opacity: 0,
           }}
           transition={{ duration: 0, delay: 0.08 }}
@@ -47,11 +47,11 @@ const Loader = () => {
           initial={{ opacity: 0 }}
           animate={{
             transform:
-              "translateX(50px) translateY(0) skewY(-10deg) skewX(-2deg)",
+              "translateX(25px) translateY(0) skewY(-10deg) skewX(-2deg)",
             opacity: 1,
           }}
           exit={{
-            transform: "translate(-250px, 100px) skewY(-10deg) skewX(-2deg)",
+            transform: "translate(-25px, 100px) skewY(-10deg) skewX(-2deg)",
             opacity: 0,
           }}
           transition={{ duration: 0, delay: 0.16 }}
@@ -63,11 +63,11 @@ const Loader = () => {
           initial={{ opacity: 0 }}
           animate={{
             transform:
-              "translateX(150px) translateY(0) skewY(-10deg) skewX(-2deg)",
+              "translateX(100px) translateY(0) skewY(-10deg) skewX(-2deg)",
             opacity: 1,
           }}
           exit={{
-            transform: "translate(-150px, 100px) skewY(-10deg) skewX(-2deg)",
+            transform: "translate(50px, 100px) skewY(-10deg) skewX(-2deg)",
             opacity: 0,
           }}
           transition={{ duration: 0, delay: 0.24 }}
@@ -79,4 +79,4 @@ const Loader = () => {
   );
 };
 
-export default Loader;
+export default LoaderMobile;

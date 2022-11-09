@@ -30,7 +30,12 @@ const Timers = () => {
 
   return (
     <React.Fragment>
-      <p className={styles["timer-heading"]}>Ustaw czas rundy</p>
+      <p className={styles["timer-heading"]}>
+        Ustaw czas rundy
+        <span className={styles["tooltip"]}>
+          W każdej chwili możesz zmienić długość rundy
+        </span>
+      </p>
       <ul ref={listRef} className={styles.timers}>
         {timersList.map((timer) => {
           return (

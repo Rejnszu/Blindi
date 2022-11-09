@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Button from "../../UI/Button";
+import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import styles from "./Blinds.module.scss";
 import { blindStructure } from "./BlindStructure";
 interface BlindsProps {

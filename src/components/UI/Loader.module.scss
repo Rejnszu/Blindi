@@ -8,7 +8,7 @@
 
   img {
     position: absolute;
-    width: 150px;
+    width: clamp(75px, 20vw, 150px);
 
     border-radius: 5px;
     transform-style: preserve-3d;
@@ -18,40 +18,38 @@
     transition: all 0.5s;
 
     &:nth-child(1) {
-      transform: translate(-150px, -100px) skewY(-10deg) skewX(-2deg);
+      --translate: -150px;
+      @media only screen and (max-width: 500px) {
+        --translate: -100px;
+      }
+      transform: translate(var(--translate), -100px) skewY(-10deg) skewX(-2deg);
       z-index: 0;
     }
     &:nth-child(2) {
-      transform: translate(-50px, -100px) skewY(-10deg) skewX(-2deg);
+      --translate: -50px;
+      @media only screen and (max-width: 500px) {
+        --translate: -25px;
+      }
+      transform: translate(var(--translate), -100px) skewY(-10deg) skewX(-2deg);
       z-index: 1;
       border: 1px solid black;
     }
     &:nth-child(3) {
-      transform: translate(50px, -100px) skewY(-10deg) skewX(-2deg);
+      --translate: 50px;
+      @media only screen and (max-width: 500px) {
+        --translate: 25px;
+      }
+      transform: translate(var(--translate), -100px) skewY(-10deg) skewX(-2deg);
       z-index: 2;
       border: 1px solid black;
     }
     &:nth-child(4) {
-      transform: translate(150px, -100px) skewY(-10deg) skewX(-2deg);
+      --translate: 150px;
+      @media only screen and (max-width: 500px) {
+        --translate: 100px;
+      }
+      transform: translate(var(--translate), -100px) skewY(-10deg) skewX(-2deg);
       z-index: 3;
     }
   }
 }
-
-// @keyframes moveCards {
-//   0% {
-//     transform: translate(-150px, 25px) skewY(-10deg) skewX(-2deg);
-//   }
-//   25% {
-//     transform: translate(-150px, 0) skewY(-10deg) skewX(-2deg);
-//   }
-//   50% {
-//     transform: translate(-150px, -25px) skewY(-10deg) skewX(-2deg);
-//   }
-//   75% {
-//     transform: translate(-150px, 0) skewY(-10deg) skewX(-2deg);
-//   }
-//   100% {
-//     transform: translate(-150px, 25px) skewY(-10deg) skewX(-2deg);
-//   }
-// }

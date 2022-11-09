@@ -2,10 +2,8 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  row-gap: 40px;
-  @media only screen and (max-width: 1000px) {
-    row-gap: 60px;
-  }
+  row-gap: 60px;
+
   &__inner-wrapper {
     display: flex;
     justify-content: space-around;
@@ -13,14 +11,18 @@
 }
 .blind {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: clamp(70px, 20vw, 100px);
+  height: clamp(70px, 20vw, 100px);
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: clamp(1.5rem, 5vw, 2rem);
   background-color: var(--main-color);
   border-radius: 50%;
+  transform: translateY(-160px);
+  @media only screen and (max-width: 1600px) {
+    transform: translateY(0);
+  }
   &--small {
     color: red;
     box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.4);
@@ -48,7 +50,7 @@
   align-self: center;
   padding: 10px;
   border-radius: 50px;
-  margin: 1rem 1rem;
+  margin: 1rem 0;
   display: flex;
   align-items: center;
   column-gap: 20px;
@@ -61,14 +63,18 @@
 
   button {
     cursor: pointer;
-    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(1rem, 4vw, 2rem);
     font-weight: 700;
     background-color: var(--main-color);
     border: none;
     outline: none;
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.301), var(--box-shadow);
-    width: 50px;
-    height: 50px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3), var(--box-shadow);
+    padding: 0 5px;
+    width: clamp(50px, 5vw, 50px);
+    height: clamp(50px, 5vw, 50px);
     border-radius: 50%;
   }
 }

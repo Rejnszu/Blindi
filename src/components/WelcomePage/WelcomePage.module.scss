@@ -1,21 +1,51 @@
 .welcome-page {
   span {
     font-weight: 700;
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    padding: 0.5rem 2rem;
     margin: 1rem 0;
     display: inline-block;
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.3), var(--box-shadow);
+    border-radius: 30px;
   }
-  &__description {
-    margin-top: 3rem;
-
-    font-size: clamp(1rem, 5vw, 1.5rem);
-    max-width: 50%;
-    @media only screen and (max-width: 850px) {
-      max-width: 90%;
+}
+.welcome-page__cta {
+  font-weight: 700;
+  display: flex;
+  margin-top: 5rem;
+  min-height: 300px;
+  @media only screen and (max-width: 850px) {
+    margin-top: 2rem;
+  }
+}
+.cta__text {
+  flex-basis: 50%;
+  font-family: var(--cta-font);
+  @media only screen and (max-width: 700px) {
+    flex-basis: 100%;
+  }
+  p {
+    &:nth-child(1) {
+      font-size: clamp(1.5rem, 5vw, 2rem);
+    }
+    &:nth-child(2) {
+      font-size: clamp(2rem, 5vw, 4rem);
+    }
+    &:nth-child(3) {
+      font-size: clamp(1rem, 5vw, 1.5rem);
+    }
+    &:nth-child(4) {
+      margin-top: 1rem;
+      font-family: "Public Sans", sans-serif;
+      color: var(--text-color--light);
+      max-width: 70%;
     }
   }
 }
-.description__list {
-  list-style: none;
-  padding: 0;
+.cta__img {
+  flex: 1 0 50%;
+  background-image: url("../../assets/frontcards.png");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
