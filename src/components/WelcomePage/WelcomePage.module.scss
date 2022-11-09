@@ -1,8 +1,21 @@
 .welcome-page {
-  &__description {
-    margin-top: 2rem;
-    background-color: grey;
-    font-size: 1.2rem;
-    max-width: 50%;
+  span {
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin: 1rem 0;
+    display: inline-block;
   }
+  &__description {
+    margin-top: 3rem;
+
+    font-size: clamp(1rem, 5vw, 1.5rem);
+    max-width: 50%;
+    @media only screen and (max-width: 850px) {
+      max-width: 90%;
+    }
+  }
+}
+.description__list {
+  list-style: none;
+  padding: 0;
 }

@@ -5,26 +5,31 @@ import { blindStructure } from "./BlindStructure";
 interface BlindsProps {
   blindLevel: number;
   increaseBlinds: () => void;
+  decreaseBlinds: () => void;
 }
-const Blinds = ({ blindLevel, increaseBlinds }: BlindsProps) => {
+const Blinds = ({
+  blindLevel,
+  increaseBlinds,
+  decreaseBlinds,
+}: BlindsProps) => {
   const [warning, setWarning] = useState(false);
-  const increaseBlindsHandler = (): void => {
-    if (blindLevel < 10) increaseBlinds();
-  };
+
   useEffect(() => {
     if (blindLevel === 10) setWarning(true);
+    else setWarning(false);
   }, [blindLevel]);
   return (
     <div className={styles.blinds}>
-      {!warning ? (
-        <Button onClick={increaseBlindsHandler} type="button">
-          Zwiększ Blindy
-        </Button>
-      ) : (
-        <p className={styles["blind__warning"]}>
-          Osiągnąłeś najwyższy poziom blindów
+      <div className={styles["blind__changer"]}>
+        <button onClick={() => blindLevel >= 1 && decreaseBlinds()}>-</button>
+        <p>
+          {warning
+            ? "Osiągnąłeś najwyższy poziom blindów"
+            : "Zmień poziom blindów"}
         </p>
-      )}
+        <button onClick={() => blindLevel < 10 && increaseBlinds()}>+</button>
+      </div>
+
       <div className={styles["blinds__inner-wrapper"]}>
         <p className={`${styles["blind"]} ${styles["blind--small"]}`}>
           {blindStructure[blindLevel].smallBlind}

@@ -1,10 +1,11 @@
 .counter {
   margin: 1.5rem 0;
-  width: 500px;
+  width: clamp(200px, 60vw, 500px);
   box-shadow: 4px 4px 10px -1px rgba(0, 0, 0, 0.2),
     -4px -4px 10px -1px rgba(0, 0, 0, 0.5);
   max-width: 90%;
   aspect-ratio: 1/1;
+  height: clamp(200px, 60vw, 500px);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -24,8 +25,8 @@
   &__button {
     font-size: clamp(1rem, 5vw, 2rem);
     font-weight: 700;
-    width: 40%;
-    height: 40%;
+    width: 50%;
+    height: 50%;
     border-radius: 50%;
     cursor: pointer;
     background-color: transparent;

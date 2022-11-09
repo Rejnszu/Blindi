@@ -8,7 +8,7 @@ interface PokerContextObj {
 }
 
 export const PokerContext = React.createContext<PokerContextObj>({
-  page: "welcomePage",
+  page: "",
   changePage: (text: string) => {},
   roundDuration: 300,
   setCurrentRoundTime: (time: number) => {},
@@ -22,7 +22,8 @@ const PokerContextProvider = ({ children }: ContextProps) => {
   const [page, setPage] = useState<string>("welcomePage");
   const [roundDuration, setRoundDuration] = useState<number>(300);
   const changePage = (page: string): void => {
-    setPage(page);
+    setPage("loader");
+    setTimeout(() => setPage(page), 1500);
   };
   const setCurrentRoundTime = (time: number): void => {
     setRoundDuration(time);

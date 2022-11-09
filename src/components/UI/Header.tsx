@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Header.module.scss";
 import { motion } from "framer-motion";
+import image from "../../assets/header-cards.png";
 interface HeaderProps {
   children: React.ReactNode;
 }
@@ -15,6 +16,7 @@ const Header = ({ children }: HeaderProps) => {
         className={styles.heading}
       >
         {children}
+        <img src={image} alt="headerimage" />
       </motion.h1>
     </header>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import Header from "../UI/Header";
 import GameCounter from "./GameCounter/GameCounter";
 import styles from "./Game.module.scss";
@@ -6,19 +6,39 @@ import AnimatedPages from "../UI/AnimatedPages";
 import Blinds from "./Blinds/Blinds";
 import Timers from "./Timers/Timers";
 import BlindsStructureTable from "./Blinds/BlindsStructureTable";
+
+const initialState = { blindLevel: 0 };
+
+type ACTIONS = { type: "increaseBlinds" } | { type: "decreaseBlinds" };
+
+function blindsReducer(state: typeof initialState, action: ACTIONS) {
+  switch (action.type) {
+    case "increaseBlinds":
+      return { blindLevel: state.blindLevel + 1 };
+    case "decreaseBlinds":
+      return { blindLevel: state.blindLevel - 1 };
+    default:
+      throw new Error("Bad Action");
+  }
+}
 const Game = () => {
-  const [blindLevel, setBlindLevel] = useState(0);
-  const increaseBlinds = (): void => {
-    if (blindLevel < 10) setBlindLevel((prevLevel) => prevLevel + 1);
-  };
+  const [state, dispatch] = useReducer(blindsReducer, initialState);
+
   return (
     <AnimatedPages>
       <div className={`${styles["game-page"]} default-page`}>
         <Header>Pora zaczać rozgrywkę!</Header>
-        <BlindsStructureTable blindLevel={blindLevel} />
+        <BlindsStructureTable blindLevel={state.blindLevel} />
         <Timers />
-        <GameCounter blindLevel={blindLevel} increaseBlinds={increaseBlinds} />
-        <Blinds blindLevel={blindLevel} increaseBlinds={increaseBlinds} />
+        <GameCounter
+          blindLevel={state.blindLevel}
+          increaseBlinds={() => dispatch({ type: "increaseBlinds" })}
+        />
+        <Blinds
+          blindLevel={state.blindLevel}
+          increaseBlinds={() => dispatch({ type: "increaseBlinds" })}
+          decreaseBlinds={() => dispatch({ type: "decreaseBlinds" })}
+        />
       </div>
     </AnimatedPages>
   );

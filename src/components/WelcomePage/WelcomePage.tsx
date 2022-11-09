@@ -12,18 +12,21 @@ const WelcomePage = () => {
       <div className={`${styles["welcome-page"]} default-page`}>
         <Header>Blindi</Header>
         <p className={styles["welcome-page__description"]}>
-          Witaj w Blindi! Aplikacji, która w prosty sposób pozwoli ci przejść
-          przez proces konfigurowania gry w pokera i pozwoli cieszyć się nia z
-          przyjaciółmi na najwyższym poziomie.
+          <span> Witaj w Blindi!</span>
+          <br /> Aplikacji, która w prosty sposób pozwoli ci przejść przez
+          proces konfigurowania gry w pokera i pozwoli cieszyć się nią z
+          przyjaciółmi na najwyższym poziomie, oszczędzając przy tym dużo czasu.
         </p>
-        <p>Na kolejnych stronach będziesz mógł:</p>
-        <ul>
+        <span>Na kolejnych stronach będziesz mógł:</span>
+        <ul className={styles["description__list"]}>
           <li>
-            W zależności od ilości posiadanych rzetonów oraz ilości graczy
-            odpowednio je rozdać
+            W prosty sposób przy pomocy naszego algorytmu rozdać odpowiednią
+            ilość rzetonów każdemu graczowi
           </li>
-          <li>Ustawić wysokość blindów oraz czas rundy</li>
-          <li></li>
+          <li>
+            Ustawić wysokość blindów oraz czas rundy, który będziesz mógł
+            śledzić przez cały przebieg rozgrywki
+          </li>
         </ul>
         <Button onClick={pokerCtx.changePage.bind(null, "game")} type="button">
           Przejdź Dalej

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 
 import WelcomePage from "./components/WelcomePage/WelcomePage";
 
@@ -8,6 +8,7 @@ import { AnimatePresence } from "framer-motion";
 import { PokerContext } from "./components/store/poker-context";
 import chips from "../src/assets/chips.png";
 import cards from "../src/assets/cards.png";
+import Loader from "./components/UI/Loader";
 function App() {
   const pokerCtx = useContext(PokerContext);
   return (
@@ -23,6 +24,7 @@ function App() {
         alt="cards"
       />
       <AnimatePresence mode="wait">
+        {pokerCtx.page === "loader" && <Loader key="loader" />}
         {pokerCtx.page === "welcomePage" && <WelcomePage key="welcomePage" />}
         {pokerCtx.page === "stackConfig" && <StackConfig key="stackConfig" />}
         {pokerCtx.page === "game" && <Game key="game" />}

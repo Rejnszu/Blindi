@@ -18,7 +18,8 @@
     font-size: clamp(0.6rem, 3vw, 1rem);
     font-weight: 700;
     border: 2px solid var(--text-color);
-    padding: 5px;
+    padding: 5px 8px;
+    border-radius: 15px;
     transition: all 0.3s;
     cursor: pointer;
     &:hover {
