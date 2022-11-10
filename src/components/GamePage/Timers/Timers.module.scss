@@ -4,19 +4,34 @@
   margin: 0.5rem 0;
   padding: 0 2rem;
   position: relative;
+  .tooltip__handler {
+    position: absolute;
+    font-size: 1rem;
+    right: -10px;
+    top: -10px;
+    box-shadow: var(--box-shadow);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover + .tooltip {
+      display: inline;
+    }
+  }
   .tooltip {
     position: absolute;
     display: none;
-    top: -60px;
+    top: -70px;
     background-color: var(--text-color);
     color: var(--main-color);
     padding: 10px;
 
     font-size: 14px;
     right: 0;
-  }
-  &:hover .tooltip {
-    display: inline;
   }
 }
 .timers {

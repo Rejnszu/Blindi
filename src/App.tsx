@@ -23,7 +23,7 @@ function App() {
   });
   const pokerCtx = useContext(PokerContext);
   return (
-    <div className="whole-app">
+    <main className="whole-app">
       <img
         className="whole-app__image whole-app__image--chips"
         src={chips}
@@ -45,7 +45,7 @@ function App() {
         {pokerCtx.page === "stackConfig" && <StackConfig key="stackConfig" />}
         {pokerCtx.page === "game" && <Game key="game" />}
       </AnimatePresence>
-    </div>
+    </main>
   );
 }
 

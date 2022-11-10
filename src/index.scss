@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poller+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Wendy+One&display=swap");
 :root {
-  --cta-font: "Poller One", cursive;
+  --cta-font: "Wendy One", sans-serif;
   --text-color: black;
   --text-color--light: rgba(0, 0, 0, 0.8);
   --main-color: rgb(255, 187, 0);
@@ -11,6 +12,7 @@
     rgba(255, 162, 0, 1) 100%
   );
   --box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+  --box-shadow--double: 0px 0px 2px rgba(0, 0, 0, 0.3), var(--box-shadow);
 }
 
 body {
@@ -47,6 +49,7 @@ p {
       left: 20px;
     }
     &--cards {
+      position: fixed;
       bottom: 20px;
       right: 20px;
     }

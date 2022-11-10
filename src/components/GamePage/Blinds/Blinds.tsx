@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Button from "../../UI/Button";
-import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
+
 import styles from "./Blinds.module.scss";
 import { blindStructure } from "./BlindStructure";
 interface BlindsProps {
@@ -16,7 +15,7 @@ const Blinds = ({
   const [warning, setWarning] = useState(false);
 
   useEffect(() => {
-    if (blindLevel === 10) setWarning(true);
+    if (blindLevel === 9) setWarning(true);
     else setWarning(false);
   }, [blindLevel]);
   return (
@@ -25,10 +24,10 @@ const Blinds = ({
         <button onClick={() => blindLevel >= 1 && decreaseBlinds()}>-</button>
         <p>
           {warning
-            ? "Osiągnąłeś najwyższy poziom blindów"
-            : "Zmień poziom blindów"}
+            ? "You have reached the highest blinds level"
+            : "Change blinds level"}
         </p>
-        <button onClick={() => blindLevel < 10 && increaseBlinds()}>+</button>
+        <button onClick={() => blindLevel < 9 && increaseBlinds()}>+</button>
       </div>
 
       <div className={styles["blinds__inner-wrapper"]}>

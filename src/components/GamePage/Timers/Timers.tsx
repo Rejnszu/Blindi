@@ -31,9 +31,10 @@ const Timers = () => {
   return (
     <React.Fragment>
       <p className={styles["timer-heading"]}>
-        Ustaw czas rundy
+        Set the time of a round
+        <span className={styles["tooltip__handler"]}>?</span>
         <span className={styles["tooltip"]}>
-          W każdej chwili możesz zmienić długość rundy
+          You can change the duration of round at any moment
         </span>
       </p>
       <ul ref={listRef} className={styles.timers}>

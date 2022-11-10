@@ -7,7 +7,7 @@ const almostFinishedSound = new Audio(
 );
 const finishedSound = new Audio(require("../../../assets/sounds/alarm.wav"));
 
-let shouldPlayBeep = true;
+let shouldPlaySound = true;
 
 let interval: NodeJS.Timer;
 interface BlindsProps {
@@ -55,14 +55,14 @@ const GameCounter = ({ blindLevel, increaseBlinds }: BlindsProps) => {
       }, 5000);
     });
 
-    shouldPlayBeep = false;
+    shouldPlaySound = false;
   };
 
   const finishRoundSetup = (): void => {
     clearInterval(interval);
     setIsPlaying((prevState) => !prevState);
     setRoundIsFinished(true);
-    shouldPlayBeep = true;
+    shouldPlaySound = true;
   };
   const resetRoundSetup = (): void => {
     setTime(ctxTime);
@@ -73,10 +73,10 @@ const GameCounter = ({ blindLevel, increaseBlinds }: BlindsProps) => {
     almostFinishedSound.currentTime = 0;
     finishedSound.pause();
     finishedSound.currentTime = 0;
-    shouldPlayBeep = true;
+    shouldPlaySound = true;
   };
   useEffect(() => {
-    if (time <= 5 && shouldPlayBeep) {
+    if (time <= 5 && shouldPlaySound) {
       audioHandler(almostFinishedSound, finishedSound);
     }
 
@@ -109,7 +109,7 @@ const GameCounter = ({ blindLevel, increaseBlinds }: BlindsProps) => {
           {!roundIsFinished ? (
             <p>{isPlaying ? "Stop" : "Start"}</p>
           ) : (
-            <p>Kolejna Runda</p>
+            <p>Next Round</p>
           )}
           <p className={styles["counter__time"]}>{timeFormatter(time)}</p>
         </button>

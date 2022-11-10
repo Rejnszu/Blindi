@@ -13,23 +13,21 @@ const WelcomePage = () => {
         <Header>Blindi</Header>
         <div className={styles["welcome-page__cta"]}>
           <div className={styles["cta__text"]}>
-            <p>Witaj w Blindi</p>
-            <p>Prawdziwa gra</p>
-            <p>Zaczyna się tutaj</p>
+            <p>Welcome to Blindi</p>
+            <p>Real game</p>
+            <p>Starts here</p>
             <p>
-              W tej aplikacji w prosty sposób przejdziesz przez proces
-              konfigurowania gry w pokera i będziesz się mógł nią cieszyć wraz
-              przyjaciółmi, na najwyższym poziomie, oszczędzając przy tym dużo
-              czasu.
+              In this app You will easily go through configuration process of
+              poker game, so You can enjoy it with your friends at the highest
+              possible level, in addition saving lots of time.
             </p>
             <Button
-              onClick={pokerCtx.changePage.bind(null, "game")}
+              onClick={pokerCtx.changePage.bind(null, "stackConfig")}
               type="button"
             >
-              Przejdź Dalej
+              Continue
             </Button>
           </div>
-          {/* <div className={styles["cta__img"]}></div> */}
         </div>
       </div>
     </AnimatedPages>

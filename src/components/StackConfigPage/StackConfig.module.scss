@@ -1,0 +1,10 @@
+.config-page__description {
+  margin-top: 4rem;
+  color: var(--text-color--light);
+  font-size: 1.5rem;
+  font-weight: 700;
+  max-width: 40%;
+  @media only screen and (max-width: 850px) {
+    max-width: 70%;
+  }
+}

@@ -9,7 +9,10 @@ import BlindsStructureTable from "./Blinds/BlindsStructureTable";
 
 const initialState = { blindLevel: 0 };
 
-type ACTIONS = { type: "increaseBlinds" } | { type: "decreaseBlinds" };
+type ACTIONS =
+  | { type: "increaseBlinds" }
+  | { type: "decreaseBlinds" }
+  | { type: "setBlinds"; payload: number };
 
 function blindsReducer(state: typeof initialState, action: ACTIONS) {
   switch (action.type) {
@@ -17,18 +20,25 @@ function blindsReducer(state: typeof initialState, action: ACTIONS) {
       return { blindLevel: state.blindLevel + 1 };
     case "decreaseBlinds":
       return { blindLevel: state.blindLevel - 1 };
+    case "setBlinds":
+      return { blindLevel: action.payload };
     default:
       throw new Error("Bad Action");
   }
 }
 const Game = () => {
   const [state, dispatch] = useReducer(blindsReducer, initialState);
-
+  const setBlinds = (value: number): void => {
+    dispatch({ type: "setBlinds", payload: value });
+  };
   return (
     <AnimatedPages>
       <div className={`${styles["game-page"]} default-page`}>
-        <Header>Pora zaczać rozgrywkę!</Header>
-        <BlindsStructureTable blindLevel={state.blindLevel} />
+        <Header>Let's start the game!</Header>
+        <BlindsStructureTable
+          blindLevel={state.blindLevel}
+          setBlinds={setBlinds}
+        />
         <Timers />
         <GameCounter
           blindLevel={state.blindLevel}

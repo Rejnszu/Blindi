@@ -3,7 +3,7 @@ import styles from "./Button.module.scss";
 interface ButtonProps {
   children: React.ReactNode;
   type: "button" | "submit" | "reset";
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 const Button = ({ children, type, onClick }: ButtonProps) => {
   return (

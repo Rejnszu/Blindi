@@ -9,7 +9,6 @@ export const blindStructure: Blinds[] = [
   { smallBlind: 20, bigBlind: 40 },
   { smallBlind: 40, bigBlind: 80 },
   { smallBlind: 50, bigBlind: 100 },
-  { smallBlind: 50, bigBlind: 100 },
   { smallBlind: 100, bigBlind: 200 },
   { smallBlind: 150, bigBlind: 300 },
   { smallBlind: 200, bigBlind: 400 },
