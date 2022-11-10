@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Blindi/static/css/main.4bec4c42.css",
-    "main.js": "/Blindi/static/js/main.d97e80cb.js",
+    "main.css": "/Blindi/static/css/main.ad87ca78.css",
+    "main.js": "/Blindi/static/js/main.aa6e8c1c.js",
     "static/media/alarm.wav": "/Blindi/static/media/alarm.8847f0e9a734d9cb9657.wav",
     "static/media/beep.wav": "/Blindi/static/media/beep.4d06140b6242f1b59d01.wav",
     "static/media/cards.png": "/Blindi/static/media/cards.3a1db39d701b96f819d8.png",
@@ -11,12 +11,20 @@
     "static/media/trefl.png": "/Blindi/static/media/trefl.056c5fb09e68895239eb.png",
     "static/media/karo.png": "/Blindi/static/media/karo.564d7241cc22ba57d484.png",
     "static/media/pik.png": "/Blindi/static/media/pik.dd42c5e2efe7b71b0a67.png",
+    "static/media/500.jpg": "/Blindi/static/media/500.518c92e64ff7e81b8b1f.jpg",
+    "static/media/1000.jpg": "/Blindi/static/media/1000.03238758c9143de996b4.jpg",
+    "static/media/10.jpg": "/Blindi/static/media/10.e434e251464b15605462.jpg",
+    "static/media/25.jpg": "/Blindi/static/media/25.6a0fc056882c1f655b3c.jpg",
+    "static/media/5.jpg": "/Blindi/static/media/5.b4ed68b2511edd17a2b1.jpg",
+    "static/media/100.jpg": "/Blindi/static/media/100.2506381bec89658e6a22.jpg",
+    "static/media/50.jpg": "/Blindi/static/media/50.bc73689b74048cee892e.jpg",
+    "static/media/250.jpg": "/Blindi/static/media/250.d154eacbc2767f072da7.jpg",
     "index.html": "/Blindi/index.html",
-    "main.4bec4c42.css.map": "/Blindi/static/css/main.4bec4c42.css.map",
-    "main.d97e80cb.js.map": "/Blindi/static/js/main.d97e80cb.js.map"
+    "main.ad87ca78.css.map": "/Blindi/static/css/main.ad87ca78.css.map",
+    "main.aa6e8c1c.js.map": "/Blindi/static/js/main.aa6e8c1c.js.map"
   },
   "entrypoints": [
-    "static/css/main.4bec4c42.css",
-    "static/js/main.d97e80cb.js"
+    "static/css/main.ad87ca78.css",
+    "static/js/main.aa6e8c1c.js"
   ]
 }
