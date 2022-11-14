@@ -1,57 +1,41 @@
 import React, { useState } from "react";
 import styles from "./StackConfigInput.module.scss";
+import { TiTick } from "react-icons/ti";
 interface InputProps {
   value: number;
   image: string;
+  addChip: React.Dispatch<React.SetStateAction<number[]>>;
 }
-const ConfigInput = ({ value, image }: InputProps) => {
-  const [inputValue, setInputValue] = useState<number | string>(0);
-  const increaseInputValue = (): void => {
-    setInputValue((prevValue) => +prevValue + 1);
+const ConfigInput = ({ value, image, addChip }: InputProps) => {
+  const manageChips = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.currentTarget.checked === true) {
+      addChip((prevState) => [...prevState, value]);
+    } else {
+      addChip((prevState) => prevState.filter((number) => number !== value));
+    }
   };
-  const decreaseInputValue = (): void => {
-    setInputValue((prevValue) => +prevValue - 1);
-  };
+
   return (
     <div className={styles["input-wrapper"]}>
       <div>
-        <img
-          className={styles["input__image"]}
-          src={image}
-          alt={image}
-          loading="lazy"
-        />
         <input
-          onFocus={() => {
-            if (inputValue === 0) setInputValue("");
-          }}
-          placeholder="0"
-          value={inputValue}
-          type="number"
-          onChange={(e) => setInputValue(Number(e.currentTarget.value))}
+          onChange={manageChips}
+          value={value}
+          type="checkbox"
           className={styles["input"]}
         />
-      </div>
-      <div>
-        <div className={styles["input__button-wrapper"]}>
-          <button
-            onClick={increaseInputValue}
-            type="button"
-            className={styles["input__buttons"]}
-          >
-            +
-          </button>
-          <button
-            onClick={decreaseInputValue}
-            type="button"
-            className={styles["input__buttons"]}
-          >
-            -
-          </button>
+
+        <div className={styles["image-wrapper"]}>
+          <img
+            className={styles["input__image"]}
+            src={image}
+            alt="coin"
+            loading="lazy"
+          />
+          <span className={styles["check-mark"]}>
+            <TiTick />
+          </span>
         </div>
-        <p className={styles["input__total-value"]}>
-          Total Chips Value: {value * +inputValue}
-        </p>
       </div>
     </div>
   );
