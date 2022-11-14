@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Blindi/static/css/main.ad87ca78.css",
-    "main.js": "/Blindi/static/js/main.aa6e8c1c.js",
+    "main.css": "/Blindi/static/css/main.9d01617a.css",
+    "main.js": "/Blindi/static/js/main.b7adf9ac.js",
     "static/media/alarm.wav": "/Blindi/static/media/alarm.8847f0e9a734d9cb9657.wav",
     "static/media/beep.wav": "/Blindi/static/media/beep.4d06140b6242f1b59d01.wav",
     "static/media/cards.png": "/Blindi/static/media/cards.3a1db39d701b96f819d8.png",
@@ -20,11 +20,11 @@
     "static/media/50.jpg": "/Blindi/static/media/50.bc73689b74048cee892e.jpg",
     "static/media/250.jpg": "/Blindi/static/media/250.d154eacbc2767f072da7.jpg",
     "index.html": "/Blindi/index.html",
-    "main.ad87ca78.css.map": "/Blindi/static/css/main.ad87ca78.css.map",
-    "main.aa6e8c1c.js.map": "/Blindi/static/js/main.aa6e8c1c.js.map"
+    "main.9d01617a.css.map": "/Blindi/static/css/main.9d01617a.css.map",
+    "main.b7adf9ac.js.map": "/Blindi/static/js/main.b7adf9ac.js.map"
   },
   "entrypoints": [
-    "static/css/main.ad87ca78.css",
-    "static/js/main.aa6e8c1c.js"
+    "static/css/main.9d01617a.css",
+    "static/js/main.b7adf9ac.js"
   ]
 }
