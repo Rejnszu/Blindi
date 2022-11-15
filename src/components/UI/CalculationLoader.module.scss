@@ -9,10 +9,10 @@
   span {
     display: inline-block;
     background-color: black;
-    width: 20px;
+    width: 5px;
     height: 20px;
-
-    border-radius: 50%;
+    border-radius: 20px;
+    // transform-origin: bottom;
     &:nth-child(1) {
       animation: animateLoader 1s linear infinite;
     }
@@ -42,13 +42,13 @@
 
 @keyframes animateLoader {
   0% {
-    transform: translateY(0);
+    transform: scaleY(100%);
   }
 
   20% {
-    transform: translateY(10px);
+    transform: scaleY(250%);
   }
   50% {
-    transform: translateY(0);
+    transform: scaleY(100%);
   }
 }
