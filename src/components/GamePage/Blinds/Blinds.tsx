@@ -18,6 +18,7 @@ const Blinds = ({
     if (blindLevel === 9) setWarning(true);
     else setWarning(false);
   }, [blindLevel]);
+
   return (
     <div className={styles.blinds}>
       <div className={styles["blind__changer"]}>

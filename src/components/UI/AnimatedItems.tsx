@@ -1,10 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-interface AnimatedPagesProps {
+interface AnimatedItemsProps {
   children: React.ReactNode;
+  center?: boolean;
 }
-const AnimatedPages = ({ children }: AnimatedPagesProps): JSX.Element => {
+const AnimatedItems = ({
+  children,
+  center,
+}: AnimatedItemsProps): JSX.Element => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -17,4 +21,4 @@ const AnimatedPages = ({ children }: AnimatedPagesProps): JSX.Element => {
   );
 };
 
-export default AnimatedPages;
+export default AnimatedItems;

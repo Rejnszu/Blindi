@@ -3,27 +3,31 @@ import ConfigInput from "./ConfigInputs/StackConfigInput";
 import styles from "./StackConfigForm.module.scss";
 import { chips } from "./ConfigInputs/ChipsData";
 import Button from "../../UI/Button";
-import InitialStack from "./InitialStack";
-import { stackValues } from "./StackValues";
+import InitialStack from "./InitialStack/InitialStack";
+import { stackValues } from "./InitialStack/StackValues";
 import { StackInitialValue } from "../../models/StackInitiaValueModel";
 import { calculateInitialStack } from "../../../actions/InitialStackCalculator";
 import { CalculatedChips } from "../../models/CalculatedChipsModel";
+import AnimatedItems from "../../UI/AnimatedItems";
+import { AnimatePresence } from "framer-motion";
+
 interface StackConfingFormProps {
   handleLoader: React.Dispatch<React.SetStateAction<boolean>>;
-  setChipsToCalculate: React.Dispatch<React.SetStateAction<CalculatedChips[]>>;
+  setChipsForEachPlayer: React.Dispatch<
+    React.SetStateAction<CalculatedChips[]>
+  >;
   showCalculations: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const StackConfigForm = ({
   handleLoader,
-  setChipsToCalculate,
+  setChipsForEachPlayer,
   showCalculations,
 }: StackConfingFormProps) => {
   const [selectedChips, setSelectedChips] = useState<number[]>([]);
   const stacksWrapperRef = useRef<HTMLDivElement>(null);
-
-  const [initialStackValue, setInitialStackValue] = useState<StackInitialValue>(
-    { value: 500, chipsMinValue: 0, chipsMaxValue: 50 }
-  );
+  const [initialStackValue, setInitialStackValue] = useState<
+    StackInitialValue | undefined
+  >(undefined);
 
   const countStack = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -33,12 +37,13 @@ const StackConfigForm = ({
       handleLoader((prevState) => !prevState);
       showCalculations(true);
     }, 2000);
-    setChipsToCalculate(
-      calculateInitialStack(initialStackValue.value, selectedChips)
+
+    setChipsForEachPlayer(
+      calculateInitialStack(initialStackValue!.value, selectedChips)
     );
   };
 
-  const setActiveItem = (
+  const setActiveItemAndReset = (
     e: React.MouseEvent<HTMLDivElement>,
     style: string
   ): void => {
@@ -47,6 +52,8 @@ const StackConfigForm = ({
       e.currentTarget.classList.add(style);
     });
     setSelectedChips([]);
+    setChipsForEachPlayer([]);
+    showCalculations(false);
   };
 
   return (
@@ -56,7 +63,7 @@ const StackConfigForm = ({
         {stackValues.map((stack) => {
           return (
             <InitialStack
-              onClick={setActiveItem}
+              onClick={setActiveItemAndReset}
               setInitialStackValue={setInitialStackValue}
               key={stack.value}
               stackValues={{ ...stack }}
@@ -64,31 +71,42 @@ const StackConfigForm = ({
           );
         })}
       </div>
-      <p className={styles["inputs__header"]}>
-        Select between 4 and 5 different chips you have
-      </p>
-      <div className={styles.inputs}>
-        {chips
-          .filter(
-            (chips) =>
-              chips.value >= initialStackValue.chipsMinValue &&
-              chips.value <= initialStackValue.chipsMaxValue
-          )
-          .map((chips, i) => {
-            return (
-              <ConfigInput
-                addChip={setSelectedChips}
-                key={i}
-                selectedChips={selectedChips}
-                value={chips.value}
-                image={chips.image}
-              />
-            );
-          })}
-      </div>
-      <Button onClick={countStack} type="submit">
-        Calculate stack
-      </Button>
+      <AnimatePresence mode="wait">
+        {initialStackValue !== undefined && (
+          <AnimatedItems>
+            <p className={styles["inputs__header"]}>
+              Select between 4 and 5 different chips you have
+            </p>
+
+            <div className={styles.inputs}>
+              {chips
+                .filter(
+                  (chips) =>
+                    chips.value >= initialStackValue.chipsMinValue &&
+                    chips.value <= initialStackValue.chipsMaxValue
+                )
+                .map((chips, i) => {
+                  return (
+                    <ConfigInput
+                      addChip={setSelectedChips}
+                      key={i}
+                      selectedChips={selectedChips}
+                      value={chips.value}
+                      image={chips.image}
+                    />
+                  );
+                })}
+            </div>
+          </AnimatedItems>
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {selectedChips.length >= 4 && (
+          <Button onClick={countStack} type="submit">
+            Calculate stack
+          </Button>
+        )}
+      </AnimatePresence>
     </form>
   );
 };

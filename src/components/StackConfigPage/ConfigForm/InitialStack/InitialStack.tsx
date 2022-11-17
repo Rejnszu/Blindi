@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "./InitialStack.module.scss";
-import { StackInitialValue } from "../../models/StackInitiaValueModel";
+import { StackInitialValue } from "../../../models/StackInitiaValueModel";
 interface InitialStackProps {
   stackValues: StackInitialValue;
-  setInitialStackValue: React.Dispatch<React.SetStateAction<StackInitialValue>>;
+  setInitialStackValue: React.Dispatch<
+    React.SetStateAction<StackInitialValue | undefined>
+  >;
   onClick: (e: React.MouseEvent<HTMLDivElement>, style: string) => void;
 }
 const InitialStack = ({

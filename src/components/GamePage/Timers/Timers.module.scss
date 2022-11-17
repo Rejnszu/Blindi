@@ -37,7 +37,6 @@
 .timers {
   list-style: none;
   display: flex;
-
   padding: 0;
   max-width: 100%;
   gap: 20px;
@@ -48,7 +47,6 @@
   li {
     font-size: clamp(0.6rem, 3vw, 1rem);
     font-weight: 700;
-
     padding: 5px 10px;
     box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.3), 1px 1px 1px rgba(0, 0, 0, 0.4);
     border-radius: 15px;

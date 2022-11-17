@@ -1,4 +1,4 @@
-import { StackInitialValue } from "../../models/StackInitiaValueModel";
+import { StackInitialValue } from "../../../models/StackInitiaValueModel";
 
 export const stackValues: StackInitialValue[] = [
   { value: 500, chipsMinValue: 0, chipsMaxValue: 50 },

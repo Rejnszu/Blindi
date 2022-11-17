@@ -22,7 +22,7 @@ const BlindsStructureTable = ({
             return (
               <tr
                 key={i}
-                onClick={() => setBlinds(i + 1)}
+                onClick={() => setBlinds(i)}
                 className={styles.active}
               >
                 <td>{i + 1}</td>

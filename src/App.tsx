@@ -1,9 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
-
 import WelcomePage from "./components/WelcomePage/WelcomePage";
-
-import Game from "./components/GamePage/Game";
-import StackConfig from "./components/StackConfigPage/StackConfig";
+import GamePage from "./components/GamePage/GamePage";
+import StackConfigPage from "./components/StackConfigPage/StackConfigPage";
 import { AnimatePresence } from "framer-motion";
 import { PokerContext } from "./components/store/poker-context";
 import chips from "../src/assets/chips.png";
@@ -42,8 +40,10 @@ function App() {
             <LoaderMobile key="mobileLoader" />
           ))}
         {pokerCtx.page === "welcomePage" && <WelcomePage key="welcomePage" />}
-        {pokerCtx.page === "stackConfig" && <StackConfig key="stackConfig" />}
-        {pokerCtx.page === "game" && <Game key="game" />}
+        {pokerCtx.page === "stackConfig" && (
+          <StackConfigPage key="stackConfig" />
+        )}
+        {pokerCtx.page === "game" && <GamePage key="game" />}
       </AnimatePresence>
     </main>
   );

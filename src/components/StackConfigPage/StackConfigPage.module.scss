@@ -1,7 +1,7 @@
 .config-page__description {
   margin-top: 4rem;
   color: var(--text-color--light);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   max-width: 40%;
   @media only screen and (max-width: 850px) {
@@ -11,5 +11,6 @@
 .results {
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 150px));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  margin-bottom: 3rem;
 }

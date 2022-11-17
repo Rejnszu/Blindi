@@ -9,7 +9,7 @@ const WelcomePage = () => {
   const pokerCtx = useContext(PokerContext);
   return (
     <AnimatedPages>
-      <div className={`${styles["welcome-page"]} default-page`}>
+      <main className={`${styles["welcome-page"]} default-page`}>
         <Header>Blindi</Header>
         <div className={styles["welcome-page__cta"]}>
           <div className={styles["cta__text"]}>
@@ -29,7 +29,7 @@ const WelcomePage = () => {
             </Button>
           </div>
         </div>
-      </div>
+      </main>
     </AnimatedPages>
   );
 };

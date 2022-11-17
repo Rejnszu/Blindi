@@ -1,7 +1,7 @@
-import React, { useState, useReducer } from "react";
+import React, { useReducer } from "react";
 import Header from "../UI/Header";
 import GameCounter from "./GameCounter/GameCounter";
-import styles from "./Game.module.scss";
+import styles from "./GamePage.module.scss";
 import AnimatedPages from "../UI/AnimatedPages";
 import Blinds from "./Blinds/Blinds";
 import Timers from "./Timers/Timers";
@@ -26,14 +26,14 @@ function blindsReducer(state: typeof initialState, action: ACTIONS) {
       throw new Error("Bad Action");
   }
 }
-const Game = () => {
+const GamePage = () => {
   const [state, dispatch] = useReducer(blindsReducer, initialState);
   const setBlinds = (value: number): void => {
     dispatch({ type: "setBlinds", payload: value });
   };
   return (
     <AnimatedPages>
-      <div className={`${styles["game-page"]} default-page`}>
+      <main className={`${styles["game-page"]} default-page`}>
         <Header>Let's start the game!</Header>
         <BlindsStructureTable
           blindLevel={state.blindLevel}
@@ -49,9 +49,9 @@ const Game = () => {
           increaseBlinds={() => dispatch({ type: "increaseBlinds" })}
           decreaseBlinds={() => dispatch({ type: "decreaseBlinds" })}
         />
-      </div>
+      </main>
     </AnimatedPages>
   );
 };
 
-export default Game;
+export default GamePage;

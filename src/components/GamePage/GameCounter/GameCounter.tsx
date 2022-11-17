@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { PokerContext } from "../../store/poker-context";
 import styles from "./GameCounter.module.scss";
 import timeFormatter from "./TimeFormatter";
@@ -10,21 +10,23 @@ const finishedSound = new Audio(require("../../../assets/sounds/alarm.wav"));
 let shouldPlaySound = true;
 
 let interval: NodeJS.Timer;
+
 interface BlindsProps {
   blindLevel: number;
   increaseBlinds: () => void;
 }
 const GameCounter = ({ blindLevel, increaseBlinds }: BlindsProps) => {
-  const pokerCtx = useContext(PokerContext);
-  const ctxTime = pokerCtx.roundDuration;
+  const roundDuration = useContext(PokerContext).roundDuration;
+
   const [counterFilling, setCounterFilling] = useState(0);
-  const [time, setTime] = useState(ctxTime);
+  const [time, setTime] = useState(roundDuration);
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [roundIsFinished, setRoundIsFinished] = useState(false);
+
   function timer(): void {
     if (roundIsFinished) {
-      setTime(ctxTime);
+      setTime(roundDuration);
       setRoundIsFinished(false);
       setCounterFilling(0);
     }
@@ -34,7 +36,7 @@ const GameCounter = ({ blindLevel, increaseBlinds }: BlindsProps) => {
     if (!isPlaying) {
       interval = setInterval(() => {
         setTime((prevTime) => prevTime - 0.02);
-        setCounterFilling((prevValue) => prevValue + 360 / ctxTime / 50);
+        setCounterFilling((prevValue) => prevValue + 360 / roundDuration / 50);
       }, 20);
     }
   }
@@ -65,7 +67,7 @@ const GameCounter = ({ blindLevel, increaseBlinds }: BlindsProps) => {
     shouldPlaySound = true;
   };
   const resetRoundSetup = (): void => {
-    setTime(ctxTime);
+    setTime(roundDuration);
     clearInterval(interval);
     setIsPlaying(false);
     setCounterFilling(0);
@@ -90,7 +92,8 @@ const GameCounter = ({ blindLevel, increaseBlinds }: BlindsProps) => {
 
   useEffect(() => {
     resetRoundSetup();
-  }, [ctxTime]);
+  }, [roundDuration]);
+
   const style = {
     background: `conic-gradient(rgb(0, 0,0) ${counterFilling}deg, transparent ${
       counterFilling + 0.5
