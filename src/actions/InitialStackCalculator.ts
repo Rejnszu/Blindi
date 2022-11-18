@@ -62,7 +62,7 @@ export const calculateInitialStack = (
       return [];
     }
   }
-  //   Calculations for 1000 stack
+  //   Calculations for 3000 stack
   if (initialStack === 3000) {
     if (selectedChips.every((chips) => [25, 50, 100, 250].includes(chips))) {
       return [
@@ -106,16 +106,16 @@ export const calculateInitialStack = (
     }
     if (selectedChips.every((chips) => [25, 50, 250, 1000].includes(chips))) {
       return [
-        { value: 25, amount: 14 },
-        { value: 50, amount: 8 },
+        { value: 25, amount: 10 },
+        { value: 50, amount: 10 },
         { value: 250, amount: 5 },
         { value: 1000, amount: 1 },
       ];
     }
     if (selectedChips.every((chips) => [25, 50, 250, 500].includes(chips))) {
       return [
-        { value: 25, amount: 14 },
-        { value: 50, amount: 8 },
+        { value: 25, amount: 10 },
+        { value: 50, amount: 10 },
         { value: 250, amount: 5 },
         { value: 500, amount: 2 },
       ];
@@ -156,6 +156,134 @@ export const calculateInitialStack = (
         { value: 100, amount: 5 },
         { value: 250, amount: 4 },
         { value: 500, amount: 2 },
+      ];
+    } else {
+      return [];
+    }
+  } //   Calculations for 1500 stack
+  if (initialStack === 1500) {
+    if (selectedChips.every((chips) => [10, 50, 100, 250].includes(chips))) {
+      return [
+        { value: 10, amount: 10 },
+        { value: 25, amount: 8 },
+        { value: 100, amount: 7 },
+        { value: 250, amount: 2 },
+      ];
+    }
+    if (selectedChips.every((chips) => [10, 25, 100, 250].includes(chips))) {
+      return [
+        { value: 10, amount: 10 },
+        { value: 25, amount: 8 },
+        { value: 100, amount: 7 },
+        { value: 250, amount: 2 },
+      ];
+    }
+    if (selectedChips.every((chips) => [10, 20, 100, 250].includes(chips))) {
+      return [
+        { value: 10, amount: 10 },
+        { value: 20, amount: 10 },
+        { value: 100, amount: 7 },
+        { value: 250, amount: 2 },
+      ];
+    }
+    if (selectedChips.every((chips) => [20, 50, 100, 250].includes(chips))) {
+      return [
+        { value: 20, amount: 10 },
+        { value: 50, amount: 6 },
+        { value: 100, amount: 5 },
+        { value: 250, amount: 2 },
+      ];
+    }
+    if (selectedChips.every((chips) => [25, 50, 100, 250].includes(chips))) {
+      return [
+        { value: 25, amount: 10 },
+        { value: 50, amount: 5 },
+        { value: 100, amount: 5 },
+        { value: 250, amount: 2 },
+      ];
+    }
+    if (selectedChips.every((chips) => [10, 25, 50, 250].includes(chips))) {
+      return [
+        { value: 10, amount: 10 },
+        { value: 25, amount: 10 },
+        { value: 50, amount: 8 },
+        { value: 250, amount: 3 },
+      ];
+    }
+    if (selectedChips.every((chips) => [10, 20, 50, 250].includes(chips))) {
+      return [
+        { value: 10, amount: 10 },
+        { value: 20, amount: 10 },
+        { value: 50, amount: 9 },
+        { value: 250, amount: 3 },
+      ];
+    }
+    if (selectedChips.every((chips) => [10, 20, 50, 100].includes(chips))) {
+      return [
+        { value: 10, amount: 10 },
+        { value: 20, amount: 10 },
+        { value: 50, amount: 8 },
+        { value: 100, amount: 8 },
+      ];
+    }
+    if (selectedChips.every((chips) => [10, 25, 50, 100].includes(chips))) {
+      return [
+        { value: 10, amount: 10 },
+        { value: 25, amount: 8 },
+        { value: 50, amount: 8 },
+        { value: 100, amount: 8 },
+      ];
+    }
+    if (
+      selectedChips.every((chips) => [10, 25, 50, 100, 250].includes(chips))
+    ) {
+      return [
+        { value: 10, amount: 10 },
+        { value: 25, amount: 10 },
+        { value: 50, amount: 5 },
+        { value: 100, amount: 4 },
+        { value: 250, amount: 2 },
+      ];
+    }
+    if (
+      selectedChips.every((chips) => [10, 20, 50, 100, 250].includes(chips))
+    ) {
+      return [
+        { value: 10, amount: 10 },
+        { value: 20, amount: 10 },
+        { value: 50, amount: 6 },
+        { value: 100, amount: 4 },
+        { value: 250, amount: 2 },
+      ];
+    } else {
+      return [];
+    }
+  } //   Calculations for 1000 stack
+  if (initialStack === 1000) {
+    if (selectedChips.every((chips) => [5, 10, 20, 50].includes(chips))) {
+      return [
+        { value: 5, amount: 10 },
+        { value: 10, amount: 10 },
+        { value: 20, amount: 10 },
+        { value: 50, amount: 10 },
+      ];
+    }
+    if (selectedChips.every((chips) => [5, 20, 25, 50, 100].includes(chips))) {
+      return [
+        { value: 5, amount: 10 },
+        { value: 20, amount: 10 },
+        { value: 25, amount: 8 },
+        { value: 50, amount: 7 },
+        { value: 100, amount: 2 },
+      ];
+    }
+    if (selectedChips.every((chips) => [5, 10, 20, 50, 100].includes(chips))) {
+      return [
+        { value: 5, amount: 10 },
+        { value: 10, amount: 10 },
+        { value: 20, amount: 10 },
+        { value: 50, amount: 9 },
+        { value: 100, amount: 2 },
       ];
     } else {
       return [];

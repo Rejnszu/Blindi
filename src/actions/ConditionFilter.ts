@@ -1,5 +1,5 @@
 import { Chips } from "../components/models/ChipsModel";
-import InitialStack from "../components/StackConfigPage/ConfigForm/InitialStack/InitialStack";
+
 export const conditionFilter = (
   selectedChips: number[],
   initialStack: number,
@@ -26,17 +26,11 @@ export const conditionFilter = (
     }
   }
   if (initialStack === 1000) {
-    if (selectedChips.includes(100)) {
-      return chips.filter((chip) => chip.value !== 250);
-    }
-    if (selectedChips.includes(250)) {
-      return chips.filter((chip) => chip.value !== 100);
-    }
-    if (selectedChips.includes(10)) {
-      return chips.filter((chip) => chip.value !== 25);
-    }
     if (selectedChips.includes(25)) {
       return chips.filter((chip) => chip.value !== 10);
+    }
+    if (selectedChips.includes(5 && 10)) {
+      return chips.filter((chip) => chip.value !== 25);
     } else {
       return [...chips];
     }
