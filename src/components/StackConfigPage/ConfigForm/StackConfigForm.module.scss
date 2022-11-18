@@ -5,6 +5,9 @@
   button {
     align-self: center;
   }
+  @media only screen and (max-width: 800px) {
+    margin: 2rem 0 0 0;
+  }
 }
 .form__inner-wrapper {
   display: flex;
@@ -17,10 +20,11 @@
   }
 }
 .inputs__header {
-  font-size: clamp(1.25rem, 5vw, 1.75rem);
+  font-size: clamp(1.25rem, 5vw, 2rem);
   margin: 1rem 0;
   font-family: var(--cta-font);
   letter-spacing: 2px;
+  font-weight: 700;
 }
 .inputs {
   display: grid;

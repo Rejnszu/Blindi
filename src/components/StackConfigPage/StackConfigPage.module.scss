@@ -11,6 +11,8 @@
 .results {
   display: grid;
   grid-gap: 20px;
+  max-width: 80%;
+  margin: auto;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   margin-bottom: 3rem;
 }

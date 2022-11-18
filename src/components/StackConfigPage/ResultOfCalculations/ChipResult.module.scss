@@ -1,13 +1,13 @@
 .result {
   display: flex;
   justify-content: center;
+  margin-top: 1rem;
 
   img {
     box-shadow: var(--box-shadow--double);
     height: 70px;
     width: 70px;
     transition: all 0.3s;
-    filter: grayscale(0.5);
     border-radius: 50%;
   }
   span {

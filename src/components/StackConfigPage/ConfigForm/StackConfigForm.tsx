@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ConfigInput from "./ConfigInputs/StackConfigInput";
 import styles from "./StackConfigForm.module.scss";
 import { chips } from "./ConfigInputs/ChipsData";
@@ -9,8 +9,7 @@ import { StackInitialValue } from "../../models/StackInitiaValueModel";
 import { calculateInitialStack } from "../../../actions/InitialStackCalculator";
 import { CalculatedChips } from "../../models/CalculatedChipsModel";
 import AnimatedItems from "../../UI/AnimatedItems";
-import { AnimatePresence } from "framer-motion";
-
+import { conditionFilter } from "../../../actions/ConditionFilter";
 interface StackConfingFormProps {
   handleLoader: React.Dispatch<React.SetStateAction<boolean>>;
   setChipsForEachPlayer: React.Dispatch<
@@ -28,7 +27,7 @@ const StackConfigForm = ({
   const [initialStackValue, setInitialStackValue] = useState<
     StackInitialValue | undefined
   >(undefined);
-
+  const shouldCalculate = selectedChips.length >= 4 && selectedChips.length < 6;
   const countStack = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     showCalculations(false);
@@ -39,7 +38,10 @@ const StackConfigForm = ({
     }, 2000);
 
     setChipsForEachPlayer(
-      calculateInitialStack(initialStackValue!.value, selectedChips)
+      calculateInitialStack(
+        initialStackValue!.value,
+        selectedChips.sort((a, b) => a - b)
+      )
     );
   };
 
@@ -55,10 +57,15 @@ const StackConfigForm = ({
     setChipsForEachPlayer([]);
     showCalculations(false);
   };
-
+  console.log(selectedChips);
+  useEffect(() => {
+    if (!shouldCalculate) {
+      showCalculations(false);
+    }
+  }, [shouldCalculate]);
   return (
     <form className={styles["form"]}>
-      <p className={styles["inputs__header"]}>Select a beginning stack</p>
+      <p className={styles["inputs__header"]}>Select the beginning stack:</p>
       <div ref={stacksWrapperRef} className={styles["form__inner-wrapper"]}>
         {stackValues.map((stack) => {
           return (
@@ -71,42 +78,42 @@ const StackConfigForm = ({
           );
         })}
       </div>
-      <AnimatePresence mode="wait">
-        {initialStackValue !== undefined && (
-          <AnimatedItems>
-            <p className={styles["inputs__header"]}>
-              Select between 4 and 5 different chips you have
-            </p>
 
-            <div className={styles.inputs}>
-              {chips
-                .filter(
-                  (chips) =>
-                    chips.value >= initialStackValue.chipsMinValue &&
-                    chips.value <= initialStackValue.chipsMaxValue
-                )
-                .map((chips, i) => {
-                  return (
-                    <ConfigInput
-                      addChip={setSelectedChips}
-                      key={i}
-                      selectedChips={selectedChips}
-                      value={chips.value}
-                      image={chips.image}
-                    />
-                  );
-                })}
-            </div>
-          </AnimatedItems>
-        )}
-      </AnimatePresence>
-      <AnimatePresence>
-        {selectedChips.length >= 4 && (
-          <Button onClick={countStack} type="submit">
-            Calculate stack
-          </Button>
-        )}
-      </AnimatePresence>
+      {initialStackValue !== undefined && (
+        <AnimatedItems>
+          <p className={styles["inputs__header"]}>
+            Select between 4 and 5 different chips you have:
+          </p>
+
+          <div className={styles.inputs}>
+            {conditionFilter(
+              selectedChips,
+              initialStackValue.value,
+              chips.filter(
+                (chips) =>
+                  chips.value >= initialStackValue.chipsMinValue &&
+                  chips.value <= initialStackValue.chipsMaxValue
+              )
+            ).map((chips, i) => {
+              return (
+                <ConfigInput
+                  addChip={setSelectedChips}
+                  key={chips.value}
+                  selectedChips={selectedChips}
+                  value={chips.value}
+                  image={chips.image}
+                />
+              );
+            })}
+          </div>
+        </AnimatedItems>
+      )}
+
+      {shouldCalculate && (
+        <Button onClick={countStack} type="submit">
+          Calculate stack
+        </Button>
+      )}
     </form>
   );
 };

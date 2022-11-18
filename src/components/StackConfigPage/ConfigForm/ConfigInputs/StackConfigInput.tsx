@@ -13,6 +13,7 @@ const ConfigInput = ({ value, image, addChip, selectedChips }: InputProps) => {
   const manageChips = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.currentTarget.checked === true) {
       addChip((prevState) => [...prevState, value]);
+      
     } else {
       addChip((prevState) => prevState.filter((number) => number !== value));
     }

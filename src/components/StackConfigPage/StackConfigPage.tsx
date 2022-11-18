@@ -10,7 +10,6 @@ import { chips } from "./ConfigForm/ConfigInputs/ChipsData";
 import { CalculatedChips } from "../models/CalculatedChipsModel";
 import ChipResult from "./ResultOfCalculations/ChipResult";
 import AnimatedItems from "../UI/AnimatedItems";
-import { AnimatePresence } from "framer-motion";
 
 const StackConfigPage = () => {
   const pokerCtx = useContext(PokerContext);
@@ -31,35 +30,33 @@ const StackConfigPage = () => {
           setChipsForEachPlayer={setChipsForEachPlayer}
         />
         {isLoading && <CalculationLoader />}
-        <AnimatePresence>
-          {showCalculations && (
-            <AnimatedItems>
-              <div className={styles.results}>
-                {chipsForEachPlayer.map((result) => {
-                  return (
-                    <ChipResult
-                      key={result.value}
-                      amount={result.amount}
-                      image={
-                        chips.find((chip) => chip.value === result.value)!.image
-                      }
-                    />
-                  );
-                })}
-              </div>
-            </AnimatedItems>
-          )}
-        </AnimatePresence>
-        <AnimatePresence>
-          {showCalculations && !isLoading && (
-            <Button
-              onClick={pokerCtx.changePage.bind(null, "game")}
-              type="button"
-            >
-              Continue
-            </Button>
-          )}
-        </AnimatePresence>
+
+        {showCalculations && (
+          <AnimatedItems>
+            <div className={styles.results}>
+              {chipsForEachPlayer.map((result) => {
+                return (
+                  <ChipResult
+                    key={result.value}
+                    amount={result.amount}
+                    image={
+                      chips.find((chip) => chip.value === result.value)!.image
+                    }
+                  />
+                );
+              })}
+            </div>
+          </AnimatedItems>
+        )}
+
+        {showCalculations && !isLoading && (
+          <Button
+            onClick={pokerCtx.changePage.bind(null, "game")}
+            type="button"
+          >
+            Continue
+          </Button>
+        )}
       </main>
     </AnimatedPages>
   );
