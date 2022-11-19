@@ -30,5 +30,11 @@
   display: grid;
   grid-gap: 20px;
   justify-content: space-between;
+
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+.chips-warning {
+  color: red;
+  font-size: 1rem;
+  font-family: "Public Sans", sans-serif;
 }

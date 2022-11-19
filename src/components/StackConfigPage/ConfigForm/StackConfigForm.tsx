@@ -57,7 +57,7 @@ const StackConfigForm = ({
     setChipsForEachPlayer([]);
     showCalculations(false);
   };
-  console.log(selectedChips);
+
   useEffect(() => {
     if (!shouldCalculate) {
       showCalculations(false);
@@ -82,7 +82,12 @@ const StackConfigForm = ({
       {initialStackValue !== undefined && (
         <AnimatedItems>
           <p className={styles["inputs__header"]}>
-            Select between 4 and 5 different chips you have:
+            Select between 4 and 5 different chips you have:{" "}
+            {selectedChips.includes(5) && initialStackValue.value === 1000 && (
+              <span className={styles["chips-warning"]}>
+                When selecting 5 you have to also select 100
+              </span>
+            )}
           </p>
 
           <div className={styles.inputs}>

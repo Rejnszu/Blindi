@@ -27,9 +27,9 @@ export const conditionFilter = (
   }
   if (initialStack === 1000) {
     if (selectedChips.includes(25)) {
-      return chips.filter((chip) => chip.value !== 10);
+      return chips.filter((chip) => chip.value !== 20);
     }
-    if (selectedChips.includes(5 && 10)) {
+    if (selectedChips.includes(5) && selectedChips.includes(10)) {
       return chips.filter((chip) => chip.value !== 25);
     } else {
       return [...chips];
