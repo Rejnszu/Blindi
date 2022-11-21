@@ -6,18 +6,21 @@ interface InitialStackProps {
   setInitialStackValue: React.Dispatch<
     React.SetStateAction<StackInitialValue | undefined>
   >;
-  onClick: (e: React.MouseEvent<HTMLDivElement>, style: string) => void;
+  setActiveItemAndReset: (
+    e: React.MouseEvent<HTMLDivElement>,
+    style: string
+  ) => void;
 }
 const InitialStack = ({
   stackValues,
   setInitialStackValue,
-  onClick,
+  setActiveItemAndReset,
 }: InitialStackProps) => {
   return (
     <div
       onClick={(e) => {
         setInitialStackValue({ ...stackValues });
-        onClick(e, `${styles.active}`);
+        setActiveItemAndReset(e, `${styles.active}`);
       }}
       className={styles["initial-stack"]}
     >

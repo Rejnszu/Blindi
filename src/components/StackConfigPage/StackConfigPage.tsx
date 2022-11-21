@@ -1,15 +1,16 @@
 import React, { useContext, useState } from "react";
-import Header from "../UI/Header";
-import Button from "../UI/Button";
 import styles from "./StackConfigPage.module.scss";
 import { PokerContext } from "../store/poker-context";
+import { chips } from "./ConfigForm/ConfigInputs/ChipsData";
+import { CalculatedChips } from "../models/CalculatedChipsModel";
+
 import AnimatedPages from "../UI/AnimatedPages";
 import StackConfigForm from "./ConfigForm/StackConfigForm";
 import CalculationLoader from "../UI/CalculationLoader";
-import { chips } from "./ConfigForm/ConfigInputs/ChipsData";
-import { CalculatedChips } from "../models/CalculatedChipsModel";
 import ChipResult from "./ResultOfCalculations/ChipResult";
 import AnimatedItems from "../UI/AnimatedItems";
+import Header from "../UI/Header";
+import Button from "../UI/Button";
 
 const StackConfigPage = () => {
   const pokerCtx = useContext(PokerContext);
@@ -23,12 +24,12 @@ const StackConfigPage = () => {
     <AnimatedPages>
       <main className={`${"default-page"}`}>
         <Header>Configure Your stacks</Header>
-        <div className={styles["config-page__description"]}></div>
         <StackConfigForm
           handleLoader={setIsLoading}
           showCalculations={setShowCalculations}
           setChipsForEachPlayer={setChipsForEachPlayer}
         />
+
         {isLoading && <CalculationLoader />}
 
         {showCalculations && (
@@ -51,7 +52,7 @@ const StackConfigPage = () => {
 
         {showCalculations && !isLoading && (
           <Button
-            onClick={pokerCtx.changePage.bind(null, "game")}
+            onClick={pokerCtx.changePage.bind(null, "gamePage")}
             type="button"
           >
             Continue

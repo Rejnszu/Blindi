@@ -10,6 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   &__inner-part {
     background: var(--background-color);
     box-shadow: inset 4px 4px 10px -1px rgba(0, 0, 0, 0.2),
@@ -22,6 +23,7 @@
     justify-content: center;
     align-items: center;
   }
+
   &__button {
     font-size: clamp(1rem, 5vw, 2rem);
     font-weight: 700;
@@ -34,6 +36,7 @@
       -4px -4px 10px -1px rgba(0, 0, 0, 0.5);
     border: none;
     transition: all 0.3s;
+
     &:hover {
       transform: scale(1.1);
     }

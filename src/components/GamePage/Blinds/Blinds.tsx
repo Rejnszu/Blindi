@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-
 import styles from "./Blinds.module.scss";
 import { blindStructure } from "./BlindStructure";
+
 interface BlindsProps {
   blindLevel: number;
   increaseBlinds: () => void;

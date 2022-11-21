@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
+import styles from "./GamePage.module.scss";
 import Header from "../UI/Header";
 import GameCounter from "./GameCounter/GameCounter";
-import styles from "./GamePage.module.scss";
 import AnimatedPages from "../UI/AnimatedPages";
 import Blinds from "./Blinds/Blinds";
 import Timers from "./Timers/Timers";

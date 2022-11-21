@@ -1,6 +1,7 @@
 import React, { useContext, useRef } from "react";
 import styles from "./Timers.module.scss";
 import { PokerContext } from "../../store/poker-context";
+
 interface TimerList {
   name: string;
   time: number;

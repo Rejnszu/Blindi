@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import styles from "./WelcomePage.module.scss";
+import { PokerContext } from "../store/poker-context";
 import Header from "../UI/Header";
 import AnimatedPages from "../UI/AnimatedPages";
-import { PokerContext } from "../store/poker-context";
 import Button from "../UI/Button";
 
 const WelcomePage = () => {
@@ -22,7 +22,7 @@ const WelcomePage = () => {
               possible level, in addition saving lots of time.
             </p>
             <Button
-              onClick={pokerCtx.changePage.bind(null, "stackConfig")}
+              onClick={pokerCtx.changePage.bind(null, "stackConfigPage")}
               type="button"
             >
               Continue

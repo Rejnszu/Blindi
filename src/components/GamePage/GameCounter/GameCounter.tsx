@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import { PokerContext } from "../../store/poker-context";
 import styles from "./GameCounter.module.scss";
+import { PokerContext } from "../../store/poker-context";
 import timeFormatter from "./TimeFormatter";
 const almostFinishedSound = new Audio(
   require("../../../assets/sounds/beep.wav")
@@ -16,27 +16,28 @@ interface BlindsProps {
   increaseBlinds: () => void;
 }
 const GameCounter = ({ blindLevel, increaseBlinds }: BlindsProps) => {
-  const roundDuration = useContext(PokerContext).roundDuration;
+  const roundDurationCtx = useContext(PokerContext).roundDuration;
 
   const [counterFilling, setCounterFilling] = useState(0);
-  const [time, setTime] = useState(roundDuration);
+  const [roundDuration, setRoundDuration] = useState(roundDurationCtx);
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [roundIsFinished, setRoundIsFinished] = useState(false);
 
   function timer(): void {
     if (roundIsFinished) {
-      setTime(roundDuration);
+      setRoundDuration(roundDurationCtx);
       setRoundIsFinished(false);
       setCounterFilling(0);
     }
-
     clearInterval(interval);
 
     if (!isPlaying) {
       interval = setInterval(() => {
-        setTime((prevTime) => prevTime - 0.02);
-        setCounterFilling((prevValue) => prevValue + 360 / roundDuration / 50);
+        setRoundDuration((prevTime) => prevTime - 0.02);
+        setCounterFilling(
+          (prevValue) => prevValue + 360 / roundDurationCtx / 50
+        );
       }, 20);
     }
   }
@@ -67,7 +68,7 @@ const GameCounter = ({ blindLevel, increaseBlinds }: BlindsProps) => {
     shouldPlaySound = true;
   };
   const resetRoundSetup = (): void => {
-    setTime(roundDuration);
+    setRoundDuration(roundDurationCtx);
     clearInterval(interval);
     setIsPlaying(false);
     setCounterFilling(0);
@@ -78,21 +79,21 @@ const GameCounter = ({ blindLevel, increaseBlinds }: BlindsProps) => {
     shouldPlaySound = true;
   };
   useEffect(() => {
-    if (time <= 5 && shouldPlaySound) {
+    if (roundDuration <= 5 && shouldPlaySound) {
       audioHandler(almostFinishedSound, finishedSound);
     }
 
-    if (time <= 0.1) {
+    if (roundDuration <= 0.1) {
       if (blindLevel < 10) {
         increaseBlinds();
       }
       finishRoundSetup();
     }
-  }, [time]);
+  }, [roundDuration]);
 
   useEffect(() => {
     resetRoundSetup();
-  }, [roundDuration]);
+  }, [roundDurationCtx]);
 
   const style = {
     background: `conic-gradient(rgb(0, 0,0) ${counterFilling}deg, transparent ${
@@ -114,7 +115,9 @@ const GameCounter = ({ blindLevel, increaseBlinds }: BlindsProps) => {
           ) : (
             <p>Next Round</p>
           )}
-          <p className={styles["counter__time"]}>{timeFormatter(time)}</p>
+          <p className={styles["counter__time"]}>
+            {timeFormatter(roundDuration)}
+          </p>
         </button>
       </div>
     </div>

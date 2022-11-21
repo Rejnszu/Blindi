@@ -3,12 +3,8 @@ import { motion } from "framer-motion";
 
 interface AnimatedItemsProps {
   children: React.ReactNode;
-  center?: boolean;
 }
-const AnimatedItems = ({
-  children,
-  center,
-}: AnimatedItemsProps): JSX.Element => {
+const AnimatedItems = ({ children }: AnimatedItemsProps): JSX.Element => {
   return (
     <motion.div
       initial={{ opacity: 0 }}

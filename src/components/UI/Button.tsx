@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Button.module.scss";
 import { motion } from "framer-motion";
+
 interface ButtonProps {
   children: React.ReactNode;
   type: "button" | "submit" | "reset";

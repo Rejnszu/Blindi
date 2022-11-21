@@ -1,15 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
-import ConfigInput from "./ConfigInputs/StackConfigInput";
 import styles from "./StackConfigForm.module.scss";
 import { chips } from "./ConfigInputs/ChipsData";
-import Button from "../../UI/Button";
-import InitialStack from "./InitialStack/InitialStack";
 import { stackValues } from "./InitialStack/StackValues";
 import { StackInitialValue } from "../../models/StackInitiaValueModel";
-import { calculateInitialStack } from "../../../actions/InitialStackCalculator";
 import { CalculatedChips } from "../../models/CalculatedChipsModel";
-import AnimatedItems from "../../UI/AnimatedItems";
 import { conditionFilter } from "../../../actions/ConditionFilter";
+import { calculateInitialStack } from "../../../actions/InitialStackCalculator";
+
+import ConfigInput from "./ConfigInputs/StackConfigInput";
+import AnimatedItems from "../../UI/AnimatedItems";
+import Button from "../../UI/Button";
+import InitialStack from "./InitialStack/InitialStack";
+
 interface StackConfingFormProps {
   handleLoader: React.Dispatch<React.SetStateAction<boolean>>;
   setChipsForEachPlayer: React.Dispatch<
@@ -23,11 +25,18 @@ const StackConfigForm = ({
   showCalculations,
 }: StackConfingFormProps) => {
   const [selectedChips, setSelectedChips] = useState<number[]>([]);
-  const stacksWrapperRef = useRef<HTMLDivElement>(null);
   const [initialStackValue, setInitialStackValue] = useState<
     StackInitialValue | undefined
   >(undefined);
-  const shouldCalculate = selectedChips.length >= 4 && selectedChips.length < 6;
+  const stacksWrapperRef = useRef<HTMLDivElement>(null);
+
+  const shouldCalculate =
+    initialStackValue?.value === 1000 && selectedChips.includes(5)
+      ? selectedChips.length >= 4 &&
+        selectedChips.length < 6 &&
+        selectedChips.includes(100)
+      : selectedChips.length >= 4 && selectedChips.length < 6;
+
   const countStack = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     showCalculations(false);
@@ -63,6 +72,7 @@ const StackConfigForm = ({
       showCalculations(false);
     }
   }, [shouldCalculate]);
+
   return (
     <form className={styles["form"]}>
       <p className={styles["inputs__header"]}>Select the beginning stack:</p>
@@ -70,7 +80,7 @@ const StackConfigForm = ({
         {stackValues.map((stack) => {
           return (
             <InitialStack
-              onClick={setActiveItemAndReset}
+              setActiveItemAndReset={setActiveItemAndReset}
               setInitialStackValue={setInitialStackValue}
               key={stack.value}
               stackValues={{ ...stack }}
@@ -95,18 +105,18 @@ const StackConfigForm = ({
               selectedChips,
               initialStackValue.value,
               chips.filter(
-                (chips) =>
-                  chips.value >= initialStackValue.chipsMinValue &&
-                  chips.value <= initialStackValue.chipsMaxValue
+                (chip) =>
+                  chip.value >= initialStackValue.chipsMinValue &&
+                  chip.value <= initialStackValue.chipsMaxValue
               )
-            ).map((chips, i) => {
+            ).map((chip) => {
               return (
                 <ConfigInput
-                  addChip={setSelectedChips}
-                  key={chips.value}
+                  setSelectedChips={setSelectedChips}
+                  key={chip.value}
                   selectedChips={selectedChips}
-                  value={chips.value}
-                  image={chips.image}
+                  value={chip.value}
+                  image={chip.image}
                 />
               );
             })}

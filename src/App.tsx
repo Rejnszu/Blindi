@@ -2,14 +2,17 @@ import React, { useContext, useState, useEffect } from "react";
 import WelcomePage from "./components/WelcomePage/WelcomePage";
 import GamePage from "./components/GamePage/GamePage";
 import StackConfigPage from "./components/StackConfigPage/StackConfigPage";
+import Loader from "./components/UI/Loader";
+import LoaderMobile from "./components/UI/LoaderMobile";
 import { AnimatePresence } from "framer-motion";
 import { PokerContext } from "./components/store/poker-context";
 import chips from "../src/assets/chips.png";
 import cards from "../src/assets/cards.png";
-import Loader from "./components/UI/Loader";
-import LoaderMobile from "./components/UI/LoaderMobile";
+
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
+  const currentPage = useContext(PokerContext).page;
+
   useEffect(() => {
     function checkIfMobile() {
       setIsMobile(window.innerWidth < 600);
@@ -19,7 +22,7 @@ function App() {
       window.removeEventListener("resize", checkIfMobile);
     };
   });
-  const pokerCtx = useContext(PokerContext);
+
   return (
     <main className="whole-app">
       <img
@@ -33,17 +36,17 @@ function App() {
         alt="cards"
       />
       <AnimatePresence mode="wait">
-        {pokerCtx.page === "loader" &&
+        {currentPage === "loader" &&
           (!isMobile ? (
             <Loader key="loader" />
           ) : (
             <LoaderMobile key="mobileLoader" />
           ))}
-        {pokerCtx.page === "welcomePage" && <WelcomePage key="welcomePage" />}
-        {pokerCtx.page === "stackConfig" && (
+        {currentPage === "welcomePage" && <WelcomePage key="welcomePage" />}
+        {currentPage === "stackConfigPage" && (
           <StackConfigPage key="stackConfig" />
         )}
-        {pokerCtx.page === "game" && <GamePage key="game" />}
+        {currentPage === "gamePage" && <GamePage key="game" />}
       </AnimatePresence>
     </main>
   );
