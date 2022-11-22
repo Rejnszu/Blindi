@@ -4,8 +4,8 @@ import { chips } from "./ConfigInputs/ChipsData";
 import { stackValues } from "./InitialStack/StackValues";
 import { StackInitialValue } from "../../models/StackInitiaValueModel";
 import { CalculatedChips } from "../../models/CalculatedChipsModel";
-import { conditionFilter } from "../../../actions/ConditionFilter";
-import { calculateInitialStack } from "../../../actions/InitialStackCalculator";
+import { conditionFilter } from "../../../actions/conditionFilter";
+import { calculateInitialStack } from "../../../actions/initialStackCalculator";
 
 import ConfigInput from "./ConfigInputs/StackConfigInput";
 import AnimatedItems from "../../UI/AnimatedItems";
